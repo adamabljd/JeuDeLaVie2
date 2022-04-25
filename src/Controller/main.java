@@ -89,6 +89,9 @@ public class main extends Application {
         
         //events on vieMin
         vieMinEvent vmin = new vieMinEvent(left, vue);
+        
+        //events on vieMax
+        vieMaxEvent vmax = new vieMaxEvent(left, vue);
            
         //events on grid 
         ZoomEvent z = new ZoomEvent(center);

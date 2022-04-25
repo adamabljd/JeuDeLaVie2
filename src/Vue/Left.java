@@ -18,13 +18,13 @@ import javafx.scene.layout.VBox;
  * @author Perso
  */
 public class Left extends VBox{
-    TextField tailleP;
-    ButtonStartPause buttonSP; 
-    Button reset;
-    Button prob;
-    TextField initAlea;
-    ComboBox vieMin;
-    ComboBox vieMax;
+    private TextField tailleP;
+    private ButtonStartPause buttonSP; 
+    private Button reset;
+    private Button prob;
+    private TextField initAlea;
+    private ComboBox vieMin;
+    private ComboBox vieMax;
     
     public Left(){
         

@@ -42,7 +42,7 @@ public class vieMinEvent {
             if (selectedMax<sMin){
                 Alert myPopUp = new Alert(AlertType.ERROR);
                 myPopUp.setTitle("ERROR");
-                myPopUp.setContentText("vieMax < vieMax");
+                myPopUp.setContentText("vieMax < vieMin");
                 myPopUp.show();
             }
             else{
@@ -63,38 +63,4 @@ public class vieMinEvent {
         });
       
    }   
-   
-  /* public class Ecouteur implements EventHandler{
-    
-        @Override
-        public void handle(Event event) {
-           
-           int selectedMax = vue.getMatrice().getMaxLife();
-           int selectedMin = (int) left.getVieMin().getValue();
-
-            if (selectedMax<selectedMin){
-                Alert myPopUp = new Alert(AlertType.ERROR);
-                myPopUp.setTitle("ERROR");
-                myPopUp.setContentText("vieMax < vieMax");
-                myPopUp.show();
-            }
-            else{
-                Alert myPopUp = new Alert(AlertType.CONFIRMATION);
-                myPopUp.setTitle("CONFIRMATION");
-                myPopUp.setHeaderText("Voulez-vous vraiment modifier la valeur vieMin?");
-                Optional<ButtonType> option = myPopUp.showAndWait();
-
-                if (option.get() == null) {
-                    myPopUp.setContentText("aucune selection");
-                } else if (option.get() == ButtonType.OK) {
-                    vue.getMatrice().changeVieMin(selectedMin);
-                    myPopUp.setContentText("aucune selection");
-                 } else if (option.get() == ButtonType.CANCEL) {
-                      myPopUp.setContentText("Cancelled!");
-                 }
-            }
-            
-        }
-
-    }*/
 }
