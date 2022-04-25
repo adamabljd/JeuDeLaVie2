@@ -20,6 +20,7 @@ import Vue.*;
 public class GridEvent {
     private Grid g;
     private TrayView v;
+    private ButtonStartPause btn;
     
     public GridEvent(Grid g,TrayView v){
         this.g=g;    
@@ -39,14 +40,15 @@ public class GridEvent {
            }*/
            
     //hay ma lezim tkun grid event, hay bs enta 3m tna2e ayyehon bedak yehon alive w ayehon dead, ba3den lezim na3mol event wen lama tkun play, tbalich el simulation.
-   for(int i=1;i<=g.getSize();i++){
+        for(int i=1;i<=g.getSize();i++){
            for(int j=1;j<=g.getSize();j++){
                int row=i;
                int column=j;
                g.getlabel(i, j).setOnMouseClicked((event)-> {
                    v.GamePlateu(row, column);});
-           }
+            }
            
            }
-    }
+        }
+   
 }

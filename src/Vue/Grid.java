@@ -48,17 +48,18 @@ public class Grid extends GridPane {
         
     }
     //rend la cellule vivante = noire
-    public void setCellAlive(int x, int y) {        
+    public void setCellAliveColor(int x, int y) {        
         if ((x>0 && x <=size) && (y>0 && y <=size)) {
             boardContent[x][y].setStyle("-fx-background-color: "+BLACK_BACKGROUND+";");
         } 
     }
  
     //rend la cellule morte = blache
-    public void resetCell(int x, int y){                
+    public void setCellDeadColor(int x, int y){                
         if ((x>0 && x <=size) && (y>0 && y <=size)) {
             boardContent[x][y].setText("");
             boardContent[x][y].setStyle("-fx-background-color: "+WHITE_BACKGROUND+";");  
+            
         }
     }
     

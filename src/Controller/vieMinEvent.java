@@ -26,7 +26,7 @@ public class vieMinEvent {
    Left left; 
    TrayView vue;
    
-  public vieMinEvent(Left left, TrayView ue){
+  public vieMinEvent(Left left, TrayView vue){
        this.left = left;
        this.vue = vue;
        

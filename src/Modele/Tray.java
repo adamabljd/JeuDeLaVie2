@@ -65,7 +65,7 @@ public class Tray {
        for(int i=0;i<t.length;i++){
            for(int j=0;j<t[i].length;j++){
                if(t[i][j]==true){
-                   cells[i][j].isAlive=true;
+                   cells[i][j].setIsAlive(true);
                }
            }
        }
@@ -108,7 +108,7 @@ public class Tray {
      public void displayMat(){
          for(int i=0;i<this.cells.length;i++){
            for(int j=0;j<this.cells[i].length;j++){
-               if((this.cells[i][j]).isAlive==true){
+               if((this.cells[i][j]).getIsAlive() == true){
                    System.out.println(" * ");
                }
                else System.out.println(" - ");
