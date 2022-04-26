@@ -43,7 +43,7 @@ public class ProbEvent {
                     myPopUp.setContentText("aucune selection");
                 } else if (option.get() == ButtonType.OK) {
                     double newProb= Double.parseDouble(left.getInitAlea().getText());
-                    Tray tray=new Tray(vue.getTray().getSize(),newProb);
+                    Tray tray=new Tray(vue.getTray().getSize(),newProb, vue.getTray().getCellNb());
                     vue.resetPlateau();
                      vue.setTray(tray);
                      vue.affichePlateau();

@@ -13,7 +13,7 @@ public class exemplaire1 {
      Tray matrice;
      
     public exemplaire1(){
-         matrice=new Tray(10,0.4);
+         matrice=new Tray(10,0.4, 10);
     }
     
     

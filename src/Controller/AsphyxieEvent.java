@@ -19,7 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 /**
  *
- * @author Perso
+ * @author ahmadnajjar
  */
 public class AsphyxieEvent {
     
@@ -32,8 +32,6 @@ public class AsphyxieEvent {
        
        ComboBox asph = left.getMAsphyxie();
        
-       
-       //Ecouteur e = new Ecouteur();
        asph.setOnAction(e -> { 
                 
                 String selectedAsph = (String) left.getMAsphyxie().getValue();

@@ -13,18 +13,16 @@ import Vue.*;
 
 /**
  *
- * @author Perso
+ * @author ahmadnajjar
  */
 public class ZoomEvent {
     
-    Grid grille; 
+    private Grid grid; 
     
-    public ZoomEvent(Grid grille){
+    public ZoomEvent(Grid grid){
+        this.grid = grid;
         
-        //Ecouteur e = new Ecouteur();
-        //grille.setOnScroll(e);
-        
-        grille.setOnScroll(
+        grid.setOnScroll(
         new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {
@@ -34,21 +32,10 @@ public class ZoomEvent {
                 if (deltaY < 0){
                     zoomFactor = 0.95;
                 }
-                grille.setScaleX(grille.getScaleX() * zoomFactor);
-                grille.setScaleY(grille.getScaleY() * zoomFactor);
+                grid.setScaleX(grid.getScaleX() * zoomFactor);
+                grid.setScaleY(grid.getScaleY() * zoomFactor);
                 event.consume();
             }
         });
     }
-    
-   /*public class Ecouteur implements EventHandler<ScrollEvent>{
-    
-        @Override
-        public void handle(ScrollEvent event) {
-            if (event.getDeltaY()>0){
-                grille.setTranslateX(event.getDeltaX());
-            }
-        }
-   }*/
-   
 }

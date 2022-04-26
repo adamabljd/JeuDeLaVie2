@@ -5,12 +5,13 @@
  */
 package Modele;
 
-
 /**
  *
  * @author adamsayedabouljoud
  */
 public class Cell {
+    
+    //=========================VARIABLES=====================
     private Cell[][] cells;
 
     private int minLife = 3;
@@ -20,12 +21,11 @@ public class Cell {
     private int mortSolitude = 1;
     private int mortAsphyxie = 4;
     
-    //states
     private boolean isAlive;
     private boolean previousState;
     private boolean nextState;
 
-    //constructor
+    //=======================================CONSTRUCTOR=========================
     public Cell(Cell[][] cells, int x, int y, boolean alive) {
         this.x = x;
         this.y = y;
@@ -35,6 +35,8 @@ public class Cell {
         this.nextState = alive;   
     }
 
+    //==================================FUNCTIONS=================================
+    
     //Number of alive neighbours
     public int nbAliveNeighbours(int size){
         int c = 0;
@@ -60,7 +62,7 @@ public class Cell {
     }
     
     
-    //getters and setters
+    //================================GETS AND SETS===============================
     
     public Cell[][] getCells(){
         return this.cells;
@@ -79,7 +81,6 @@ public class Cell {
         return this.nextState;
     }
     
-     
     
     //Poisition
     public int getX(){
@@ -98,7 +99,6 @@ public class Cell {
         this.y = y;
     }
      
-    
     
     //lives
     public int getMaxLife(){
@@ -131,7 +131,7 @@ public class Cell {
         this.mortSolitude = newS;
     }
    
-   public void setAsphyxie(int newA){
+    public void setAsphyxie(int newA){
         this.mortAsphyxie = newA;
     }
     

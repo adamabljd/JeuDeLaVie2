@@ -15,7 +15,7 @@ import javafx.scene.control.ComboBox;
 
 /**
  *
- * @author Adam
+ * @author adamsayedabouljoud
  */
 public class vieMaxEvent {
     Left left; 

@@ -31,7 +31,7 @@ import Vue.TrayView;
 
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */
 public class main extends Application {
     // le  paneau principal root est la vue du jeu
@@ -40,13 +40,12 @@ public class main extends Application {
     
     @Override    
     public void start(Stage primaryStage) {
-        Tray tray=new Tray(100,0.4);
+        Tray tray=new Tray(200,0.4, 100);
         
         
         BorderPane root = new BorderPane();
         root.setPrefSize(600,600);
         
-        //grille(100,100)
         TrayView trayView= new TrayView(tray);
         
         

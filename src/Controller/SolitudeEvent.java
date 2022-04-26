@@ -19,7 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 /**
  *
- * @author Perso
+ * @author ahmadnajjar
  */
 public class SolitudeEvent {
     
@@ -33,7 +33,6 @@ public class SolitudeEvent {
        ComboBox sol= left.getMSolitude();
         String firstValue = (String) sol.getValue();
        
-       //Ecouteur e = new Ecouteur();
        sol.setOnAction(e -> { 
                 
                 String selectedSol = (String) sol.getValue();
@@ -50,7 +49,6 @@ public class SolitudeEvent {
                     vue.getTray().changeSolitude(sSol);
                     myPopUp.setContentText("aucune selection");
                  } else if (option.get() == ButtonType.CANCEL) {
-                     //sol.setValue(firstValue);
                       myPopUp.setContentText("Cancelled!");
                  }
             }

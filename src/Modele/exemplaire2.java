@@ -13,7 +13,7 @@ public class exemplaire2 {
     Tray tray;
      
     public exemplaire2(){
-         tray=new Tray(10,0.09);
+         tray=new Tray(10,0.09, 10);
     }
     
     

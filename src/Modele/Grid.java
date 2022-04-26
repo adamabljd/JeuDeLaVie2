@@ -16,16 +16,18 @@ import javafx.scene.paint.Color;
 
 /**
  *
- * @author Perso
+ * @author ahmadnajjar
  */
 
 public class Grid extends GridPane {
+    
+    
     private int size ;
-    private static final int GAP = 3 ;
-    private static final int CELL_SIZE = 5 ; 
+    private final int GAP = 3 ;
+    private final int CELL_SIZE = 5 ; 
     private Label boardContent[][]; 
-    String WHITE_BACKGROUND="#FFFFFF";
-    String BLACK_BACKGROUND="#000000";
+    private String WHITE_BACKGROUND="#FFFFFF";
+    private String RED_BACKGROUND="#FF0000";
     
     public Grid(int size){
         super();
@@ -34,6 +36,7 @@ public class Grid extends GridPane {
         this.setHgap(GAP);
         
         boardContent = new Label[size+1][size+1]; 
+        
         for(int i=1;i<=this.size;i++){
            for(int j=1;j<=this.size;j++){
            Label cell= new Label();
@@ -50,7 +53,7 @@ public class Grid extends GridPane {
     //rend la cellule vivante = noire
     public void setCellAliveColor(int x, int y) {        
         if ((x>0 && x <=size) && (y>0 && y <=size)) {
-            boardContent[x][y].setStyle("-fx-background-color: "+BLACK_BACKGROUND+";");
+            boardContent[x][y].setStyle("-fx-background-color: "+RED_BACKGROUND+";");
         } 
     }
  

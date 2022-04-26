@@ -60,8 +60,8 @@ public class Ecouteur implements EventHandler{
 
     public void runev(){
         
-            for(int i = 0 ; i < tray.getSize() ; i++){
-                for (int j = 0 ; j < tray.getSize() ; j++){
+            for(int i = 0 ; i < tray.getCellNb(); i++){
+                for (int j = 0 ; j < tray.getCellNb(); j++){
 
 //                        int voisins = 0;
 //

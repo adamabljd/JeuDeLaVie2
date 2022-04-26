@@ -19,7 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */
 public class vieMinEvent {
     
@@ -33,7 +33,6 @@ public class vieMinEvent {
        ComboBox vieMin = left.getVieMin();
        ComboBox vieMax = left.getVieMax(); 
        
-       //Ecouteur e = new Ecouteur();
        vieMin.setOnAction(e -> { 
             int selectedMax = vue.getTray().getMaxLife();
             String selectedMin = (String) left.getVieMin().getValue();

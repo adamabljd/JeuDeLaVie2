@@ -16,7 +16,7 @@ import Vue.*;
 
 /**
  *
- * @author Adam
+ * @author adamsayedbouljoud
  */
 public class ClickCellEvent {
     private Grid g;

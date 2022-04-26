@@ -20,7 +20,7 @@ public class TrayView {
     
     public TrayView(Tray tray){
         this.tray=tray;
-        g=new Grid(tray.getSize());
+        g=new Grid(tray.getCellNb());
         this.affichePlateau();
         btn = new ButtonStartPause(60);
         
