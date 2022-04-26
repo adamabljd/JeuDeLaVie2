@@ -37,28 +37,22 @@ public class Cell {
 
     //==================================FUNCTIONS=================================
     
-    //Number of alive neighbours
+    //Number of neighbours alive for each cell in cells
     public int nbAliveNeighbours(int size){
-        int c = 0;
+        int nb = 0;
         for (int i=-1; i<=1; i++) {
             for (int j = -1; j <= 1; j++) {
                     if(cells[(this.x + i +size)%size][(j + this.y + size) %size].isAlive){
-                     c++;}
+                     nb++;}
   
             }
         }
         // enlever si on compte la cellule où on est
         if (cells[this.x][this.y].isAlive){
-           c=c-1;
+           nb-=1;
         }
 
-        return c;
-//        previousState = isAlive;
-//        if (isAlive && (c <= mortSolitude || c >= mortAsphyxie)) {
-//            previousState = false;
-//        } else if (c >= minLife && c <= maxLife) {
-//                nextState = true;
-//        }
+        return nb;
     }
     
     

@@ -13,7 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import Modele.Tray;
-import Modele.Grid;
+import Vue.Grid;
 import Vue.Left;
 import Vue.TrayView;
 

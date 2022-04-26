@@ -9,16 +9,16 @@ package Modele;
  *
  * @author Perso
  */
-public class exemplaire2 {
+public class Tampon2 {
     Tray tray;
      
-    public exemplaire2(){
-         tray=new Tray(10,0.09, 10);
+    public Tampon2(){
+        tray=new Tray(10,0.09, 10);
     }
     
     
-    public Tray getMatrice(){
-        return tray;
+    public Tray getTrayT2(){
+        return this.tray;
     }
     
 }

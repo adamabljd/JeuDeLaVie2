@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class Tray {
     
+    //=================================VARIABLES================================
     private Cell[][] cells;
     
     //Tray size
@@ -24,7 +25,7 @@ public class Tray {
     private double probability;
 
 
-    //Constructor
+    //===============================CONSTRUCTOR================================
     public Tray(int size, double probability, int cellNb) {
         this.size = size;
         this.cellNb = cellNb;
@@ -33,7 +34,8 @@ public class Tray {
         initTray();
     }
 
-
+    //===============================FUNCTIONS==================================
+    
     //Cree cree les cells pour la matrice cells[][],
     //et remplie leurs states randomly
     private void initTray() {
@@ -74,10 +76,39 @@ public class Tray {
     //Retourn le nb de voisins vivant de la cell en i et j du cells
     public int cellNbAliveN(int i,int j){
        return cells[i][j].nbAliveNeighbours(this.cellNb);
-
+    }
+    
+    public void changeMinLife(int min){
+         for (int i = 0; i < this.cellNb; i++)
+            for (int j = 0; j < this.cellNb; j++) {
+                cells[i][j].setMinLife(min);
+            }
     }
 
+     public void changeMaxLife(int max){
+         for (int i = 0; i < this.cellNb; i++)
+            for (int j = 0; j < this.cellNb; j++) {
+                cells[i][j].setMaxLife(max);
+            }
+    }
 
+    public void changeAsphyxie(int a){
+        for (int i = 0; i < this.cellNb; i++){
+            for (int j = 0; j < this.cellNb; j++) {
+                this.cells[i][j].setAsphyxie(a);
+            }
+        }   
+    }     
+     
+    public void changeSolitude(int s){
+        for (int i = 0; i < this.cellNb; i++){
+            for (int j = 0; j < this.cellNb; j++) {
+                this.cells[i][j].setSolitude(s);
+            }
+        } 
+    }
+
+    //==========================GETS AND SETS===================================
     public int getSize(){
         return this.size;
     }
@@ -91,68 +122,31 @@ public class Tray {
     }
 
 
-     public Cell[][] getCellTab(){
+    public Cell[][] getCellTab(){
         return this.cells;
     }
 
 
-     public Cell getCell(int i,int j){
+    public Cell getCell(int i,int j){
         return this.cells[i][j];
     }
 
-     public double getProba(){
-         return this.probability;
-     }
-
-     public void setProba(double proba){
-         this.probability = proba;
-     }
-
-//     public void displayTrayss(){
-//         for(int i=0;i<this.cells.length;i++){
-//           for(int j=0;j<this.cells[i].length;j++){
-//               if((this.cells[i][j]).getIsAlive() == true){
-//                   System.out.println(" * ");
-//               }
-//               else System.out.println(" - ");
-//           }
-//       }
-//     }
-
-     
-     public void changeMinLife(int min){
-         for (int i = 0; i < this.cellNb; i++)
-            for (int j = 0; j < this.cellNb; j++) {
-                cells[i][j].setMinLife(min);
-            }
-     }
-
-     public void changeMaxLife(int max){
-         for (int i = 0; i < this.cellNb; i++)
-            for (int j = 0; j < this.cellNb; j++) {
-                cells[i][j].setMaxLife(max);
-            }
-     }
-
-     public int getMaxLife(){
-        return this.cells[0][0].getMaxLife(); //c'est la meme valeur pour toutes les cellules de la matrice
+    public double getProba(){
+        return this.probability;
     }
 
-     public int getMinLife(){
+    public void setProba(double proba){
+        this.probability = proba;
+    }
+     
+    //Meme valeurs pour chaque cell, 
+    //seulement pour eviter d'ecrire la meme chose plusieurs fois
+    public int getMaxLifeFromCell(){
+        return this.cells[0][0].getMaxLife();
+    }
+
+    public int getMinLifeFromCell(){
         return this.cells[0][0].getMinLife(); 
     }
-     
-    public void changeAsphyxie(int a){
-         for (int i = 0; i < this.cellNb; i++)
-            for (int j = 0; j < this.cellNb; j++) {
-                this.cells[i][j].setAsphyxie(a);
-            }
-     }     
-     
-     public void changeSolitude(int s){
-         for (int i = 0; i < this.cellNb; i++)
-            for (int j = 0; j < this.cellNb; j++) {
-                this.cells[i][j].setSolitude(s);
-            }
-     }
+    
 }

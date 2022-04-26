@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Modele.Grid;
+import Vue.Grid;
 import java.awt.event.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

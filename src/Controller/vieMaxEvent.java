@@ -29,7 +29,7 @@ public class vieMaxEvent {
        ComboBox vieMax = left.getVieMax(); 
        
        vieMax.setOnAction(e -> { 
-            int selectedMin = vue.getTray().getMinLife();
+            int selectedMin = vue.getTray().getMinLifeFromCell();
             String selectedMax = (String) left.getVieMax().getValue();
             int sMax = parseInt(selectedMax);
 

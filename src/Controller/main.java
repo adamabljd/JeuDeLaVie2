@@ -6,7 +6,7 @@
 package Controller;
 
 
-import Modele.Grid;
+import Vue.Grid;
 import Vue.*;
 import Controller.*;
 import javafx.application.Application;
@@ -34,18 +34,14 @@ import Vue.TrayView;
  * @author adamsayedabouljoud
  */
 public class main extends Application {
-    // le  paneau principal root est la vue du jeu
-    
-
     
     @Override    
     public void start(Stage primaryStage) {
-        Tray tray=new Tray(200,0.4, 100);
-        
-        
         BorderPane root = new BorderPane();
         root.setPrefSize(600,600);
         
+        
+        Tray tray=new Tray(200,0.4, 100);
         TrayView trayView= new TrayView(tray);
         
         
@@ -56,11 +52,11 @@ public class main extends Application {
        
        //events
        //combox jeux predifinis
-        exemplaire1 ex1=new exemplaire1();
-        exemplaire2 ex2 =new exemplaire2();
+        Tampon1 t1=new Tampon1();
+        Tampon2 t2 =new Tampon2();
         
-        TrayView trayView1= new TrayView(ex1.getMatrice());
-        TrayView trayView2= new TrayView(ex2.getMatrice());
+        TrayView trayView1= new TrayView(t1.getTrayT1());
+        TrayView trayView2= new TrayView(t2.getTrayT2());
         
         ExemplaireEvent exmplaireEvent= new ExemplaireEvent(trayView1,trayView2,right);
         
@@ -87,19 +83,17 @@ public class main extends Application {
         //exemplaire2
         ClickCellEvent c3=new ClickCellEvent(trayView2.getGrid(),trayView2);
         
+        
         //events on vieMin
         vieMinEvent vmin = new vieMinEvent(left, trayView);
-        
         //events on vieMax
         vieMaxEvent vmax = new vieMaxEvent(left, trayView);
-        
         //mort Asph
         AsphyxieEvent asp = new AsphyxieEvent(left, trayView);
-        
         //mort solitude
         SolitudeEvent mSol = new SolitudeEvent(left, trayView);
-        
            
+        
         //events on grid 
         ZoomEvent z = new ZoomEvent(center);
         
@@ -108,7 +102,7 @@ public class main extends Application {
         root.setRight(right);
         root.setLeft(left);      
         Scene scene = new Scene(root);        
-        primaryStage.setTitle("Jouer ");
+        primaryStage.setTitle("Game Of Life");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

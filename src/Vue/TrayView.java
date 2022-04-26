@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Vue;
-import Modele.Grid;
 import Modele.*;
 
 /**

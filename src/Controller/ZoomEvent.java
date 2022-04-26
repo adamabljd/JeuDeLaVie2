@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Modele.Grid;
+import Vue.Grid;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
-import Modele.Grid;
+import Vue.Grid;
 import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.Event;

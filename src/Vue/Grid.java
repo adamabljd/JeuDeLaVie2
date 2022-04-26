@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modele;
+package Vue;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -50,24 +50,23 @@ public class Grid extends GridPane {
        } 
         
     }
-    //rend la cellule vivante = noire
+    
+    //colorie la cellule en rouge
     public void setCellAliveColor(int x, int y) {        
-        if ((x>0 && x <=size) && (y>0 && y <=size)) {
+        if ((x>0 && x <=this.size) && (y>0 && y <=this.size)) {
             boardContent[x][y].setStyle("-fx-background-color: "+RED_BACKGROUND+";");
         } 
     }
  
-    //rend la cellule morte = blache
+    //colorie la cellule en blanc
     public void setCellDeadColor(int x, int y){                
-        if ((x>0 && x <=size) && (y>0 && y <=size)) {
-            boardContent[x][y].setText("");
+        if ((x>0 && x <=this.size) && (y>0 && y <=this.size)) {
             boardContent[x][y].setStyle("-fx-background-color: "+WHITE_BACKGROUND+";");  
-            
         }
     }
     
-    public void setSize(int s){
-        this.size=s;
+    public void setSize(int newS){
+        this.size=newS;
     }
     public int getSize( ){
         return this.size;

@@ -34,7 +34,7 @@ public class vieMinEvent {
        ComboBox vieMax = left.getVieMax(); 
        
        vieMin.setOnAction(e -> { 
-            int selectedMax = vue.getTray().getMaxLife();
+            int selectedMax = vue.getTray().getMaxLifeFromCell();
             String selectedMin = (String) left.getVieMin().getValue();
             int sMin = parseInt(selectedMin);
 
