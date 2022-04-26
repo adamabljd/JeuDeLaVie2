@@ -15,7 +15,7 @@ public class Tray {
     // grille a l'instant t 
     Cell[][] cells;
     //taille de la grille
-    int size;
+    private int size;
     
     // pourcentage de cellules vivantes initialement
     double probability;
@@ -73,8 +73,8 @@ public class Tray {
     }
     
     //compte les voisines et change l'etat d'une cellule en se basant sur l'état des voisins
-    public void game(int i,int j){
-       cells[i][j].nbAliveNeighbours();
+    public int cellNbAliveN(int i,int j){
+       return cells[i][j].nbAliveNeighbours(size);
 
     }
 
@@ -105,7 +105,7 @@ public class Tray {
          this.probability = proba;
      }
 
-     public void displayMat(){
+     public void displayTray(){
          for(int i=0;i<this.cells.length;i++){
            for(int j=0;j<this.cells[i].length;j++){
                if((this.cells[i][j]).getIsAlive() == true){
@@ -116,7 +116,7 @@ public class Tray {
        }
      }
 
-
+     
      public void changeMinLife(int min){
          for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++) {
@@ -138,4 +138,18 @@ public class Tray {
      public int getMinLife(){
         return this.cells[0][0].getMinLife(); 
     }
+     
+    public void changeAsphyxie(int a){
+         for (int i = 0; i < this.size; i++)
+            for (int j = 0; j < this.size; j++) {
+                this.cells[i][j].setAsphyxie(a);
+            }
+     }     
+     
+     public void changeSolitude(int s){
+         for (int i = 0; i < this.size; i++)
+            for (int j = 0; j < this.size; j++) {
+                this.cells[i][j].setSolitude(s);
+            }
+     }
 }

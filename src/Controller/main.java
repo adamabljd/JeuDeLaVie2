@@ -6,6 +6,7 @@
 package Controller;
 
 
+import Modele.Grid;
 import Vue.*;
 import Controller.*;
 import javafx.application.Application;
@@ -39,17 +40,17 @@ public class main extends Application {
     
     @Override    
     public void start(Stage primaryStage) {
-        Tray matrice=new Tray(100,0.4);
+        Tray tray=new Tray(100,0.4);
         
         
         BorderPane root = new BorderPane();
         root.setPrefSize(600,600);
         
         //grille(100,100)
-        TrayView vue= new TrayView(matrice);
-        //vue.affichePlateau();
+        TrayView trayView= new TrayView(tray);
         
-        Grid center = vue.getGrille();
+        
+        Grid center = trayView.getGrid();
         Right right = new Right();
         Left left= new Left();
         
@@ -59,39 +60,46 @@ public class main extends Application {
         exemplaire1 ex1=new exemplaire1();
         exemplaire2 ex2 =new exemplaire2();
         
-        TrayView vue1= new TrayView(ex1.getMatrice());
-        TrayView vue2= new TrayView(ex2.getMatrice());
+        TrayView trayView1= new TrayView(ex1.getMatrice());
+        TrayView trayView2= new TrayView(ex2.getMatrice());
         
-        ExemplaireEvent exmplaireEvent= new ExemplaireEvent(vue1,vue2,right);
+        ExemplaireEvent exmplaireEvent= new ExemplaireEvent(trayView1,trayView2,right);
         
         //bouton quit
         QuitEvent quit = new QuitEvent(right.getBorderQuit().getBorderWithQuitEH());
         
         //button startPause 
-        StartPauseEvent sp = new StartPauseEvent(left.getbuttonSP());
+        StartPauseEvent sp = new StartPauseEvent(left.getbuttonSP(), tray, trayView);
         
         //textfield: changer la taille
-        SizeEvent sizeEvent=new SizeEvent(left,root,vue);
+        SizeEvent sizeEvent=new SizeEvent(left,root,trayView);
         
         //button reset
-        ResetEvent resetEvent = new ResetEvent(left, vue);
+        ResetEvent resetEvent = new ResetEvent(left, trayView);
        
         //InitAlea 
-        ProbEvent probEvent = new ProbEvent(left, vue);
+        ProbEvent probEvent = new ProbEvent(left, trayView);
        
         //events on grid
-        GridEvent cl=new GridEvent(center,vue);
+        ClickCellEvent cl=new ClickCellEvent(center,trayView);
         //events on tampon 
         //exemplaire1
-        GridEvent c2=new GridEvent(vue1.getGrille(),vue1);
+        ClickCellEvent c2=new ClickCellEvent(trayView1.getGrid(),trayView1);
         //exemplaire2
-        GridEvent c3=new GridEvent(vue2.getGrille(),vue2);
+        ClickCellEvent c3=new ClickCellEvent(trayView2.getGrid(),trayView2);
         
         //events on vieMin
-        vieMinEvent vmin = new vieMinEvent(left, vue);
+        vieMinEvent vmin = new vieMinEvent(left, trayView);
         
         //events on vieMax
-        vieMaxEvent vmax = new vieMaxEvent(left, vue);
+        vieMaxEvent vmax = new vieMaxEvent(left, trayView);
+        
+        //mort Asph
+        AsphyxieEvent asp = new AsphyxieEvent(left, trayView);
+        
+        //mort solitude
+        SolitudeEvent mSol = new SolitudeEvent(left, trayView);
+        
            
         //events on grid 
         ZoomEvent z = new ZoomEvent(center);
@@ -114,14 +122,3 @@ public class main extends Application {
     }
     
 }
-
-
-  /*Button quit = new Button();
-        quit.setText("quit");
-        
-        right.getChildren().addAll(quit); 
-        quit.setAlignment(Pos.BOTTOM_RIGHT);
-        
-        root.setCenter(grille);
-        root.setRight(right);
-        root.setLeft(left);*/

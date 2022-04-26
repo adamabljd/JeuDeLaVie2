@@ -35,7 +35,7 @@ public class vieMinEvent {
        
        //Ecouteur e = new Ecouteur();
        vieMin.setOnAction(e -> { 
-            int selectedMax = vue.getMatrice().getMaxLife();
+            int selectedMax = vue.getTray().getMaxLife();
             String selectedMin = (String) left.getVieMin().getValue();
             int sMin = parseInt(selectedMin);
 
@@ -54,7 +54,7 @@ public class vieMinEvent {
                 if (option.get() == null) {
                     myPopUp.setContentText("aucune selection");
                 } else if (option.get() == ButtonType.OK) {
-                    vue.getMatrice().changeMinLife(sMin);
+                    vue.getTray().changeMinLife(sMin);
                     myPopUp.setContentText("aucune selection");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");

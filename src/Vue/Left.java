@@ -25,6 +25,8 @@ public class Left extends VBox{
     private TextField initAlea;
     private ComboBox vieMin;
     private ComboBox vieMax;
+    private ComboBox mSolitude;
+    private ComboBox mAsphyxie;
     
     public Left(){
         
@@ -45,27 +47,27 @@ public class Left extends VBox{
         VBox center = new VBox();
         
         Label mortsolitude = new Label("mort solitude"); 
-        ComboBox mortSolitude = new ComboBox();
-        mortSolitude.getItems().addAll("1","2","3","4");
-        mortSolitude.getSelectionModel().selectFirst();
+        mSolitude = new ComboBox();
+        mSolitude.getItems().addAll("0","1","2","3","4","5","6","7","8");
+        mSolitude.setValue("1");
         
         Label mortasphyxie = new Label("mort asphyxie"); 
-        ComboBox mortAsphyxie = new ComboBox();
-        mortAsphyxie.getItems().addAll("1","2","3","4");
-        mortAsphyxie.getSelectionModel().selectFirst();
+        mAsphyxie = new ComboBox();
+        mAsphyxie.getItems().addAll("0","1","2","3","4","5","6","7","8");
+        mAsphyxie.setValue("4");
 
         Label viemin = new Label("vie Min"); 
         vieMin = new ComboBox();
-        vieMin.getItems().addAll("1","2","3","4");
+        vieMin.getItems().addAll("0","1","2","3","4","5","6","7","8");
         vieMin.setValue("3");
         
         Label viemax = new Label("vie Max"); 
-        ComboBox vieMax = new ComboBox();
-        vieMax.getItems().addAll("1","2","3","4");
-        vieMax.getSelectionModel().selectFirst();
+        vieMax = new ComboBox();
+        vieMax.getItems().addAll("0","1","2","3","4","5","6","7","8");
+        vieMax.setValue("3");
         
         center.setSpacing(5);
-        center.getChildren().addAll(mortsolitude, mortSolitude, mortasphyxie, mortAsphyxie, viemin, vieMin, viemax, vieMax);
+        center.getChildren().addAll(mortsolitude, mSolitude, mortasphyxie, mAsphyxie, viemin, vieMin, viemax, vieMax);
         //buttonstartPause
         buttonSP=new ButtonStartPause(60);
         
@@ -103,4 +105,11 @@ public class Left extends VBox{
         return this.vieMax;
     }
     
+    public ComboBox getMSolitude(){
+        return this.mSolitude;
+    }
+    
+    public ComboBox getMAsphyxie(){
+        return this.mAsphyxie;
+    }
 }

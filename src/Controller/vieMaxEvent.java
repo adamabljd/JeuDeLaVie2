@@ -28,9 +28,8 @@ public class vieMaxEvent {
        ComboBox vieMin = left.getVieMin();
        ComboBox vieMax = left.getVieMax(); 
        
-       //Ecouteur e = new Ecouteur();
        vieMax.setOnAction(e -> { 
-            int selectedMin = vue.getMatrice().getMinLife();
+            int selectedMin = vue.getTray().getMinLife();
             String selectedMax = (String) left.getVieMax().getValue();
             int sMax = parseInt(selectedMax);
 
@@ -49,7 +48,7 @@ public class vieMaxEvent {
                 if (option.get() == null) {
                     myPopUp.setContentText("aucune selection");
                 } else if (option.get() == ButtonType.OK) {
-                    vue.getMatrice().changeMinLife(sMax);
+                    vue.getTray().changeMinLife(sMax);
                     myPopUp.setContentText("aucune selection");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");

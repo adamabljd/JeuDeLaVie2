@@ -44,15 +44,15 @@ public class ExemplaireEvent {
         public void handle(Event event) {
             if((right.getJeup()).getValue()=="exemplaire 1"){
                  right.getPane().getChildren().remove(right.getTampon());
-                 right.getPane().getChildren().add(vue1.getGrille());
-                 right.setTampon(vue1.getGrille());
+                 right.getPane().getChildren().add(vue1.getGrid());
+                 right.setTampon(vue1.getGrid());
                  
             }
            
             else if((right.getJeup()).getValue()=="exemplaire 2"){
                 right.getPane().getChildren().remove(right.getTampon());
-                 right.getPane().getChildren().add(vue2.getGrille());
-                 right.setTampon(vue2.getGrille());
+                 right.getPane().getChildren().add(vue2.getGrid());
+                 right.setTampon(vue2.getGrid());
             }
         }
         

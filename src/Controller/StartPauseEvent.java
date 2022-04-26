@@ -8,7 +8,8 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import Vue.ButtonStartPause;
+import Vue.*;
+import Modele.*;
 
 /**
  *
@@ -16,9 +17,14 @@ import Vue.ButtonStartPause;
  */
 public class StartPauseEvent {
     
+    private Tray tray;
+    private TrayView tv;
+    
     ButtonStartPause btn; 
-    public StartPauseEvent(ButtonStartPause btn){
+    public StartPauseEvent(ButtonStartPause btn, Tray tray, TrayView tv){
         this.btn = btn;
+        this.tray = tray;
+        this.tv = tv;
          Ecouteur e = new Ecouteur();
         btn.addEventHandler(ActionEvent.ACTION, e);
     }
@@ -36,6 +42,7 @@ public class Ecouteur implements EventHandler{
                 btn.setCurrentImg(2); 
                 btn.setIsActive(true);
                 System.out.println(btn.getIsActive());
+                runev();
             }
             
             else {
@@ -49,6 +56,59 @@ public class Ecouteur implements EventHandler{
         }
 
     }
+
+
+    public void runev(){
+        
+            for(int i = 0 ; i < tray.getSize() ; i++){
+                for (int j = 0 ; j < tray.getSize() ; j++){
+
+//                        int voisins = 0;
+//
+//                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
+//                                voisins++;
+//
+//                        if(tray.getCell(i,(j-1+tray.getSize())%tray.getSize()).getIsAlive())
+//                                voisins++;
+//
+//                        if(tray.getCell((i+1)%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
+//                                voisins++;
+//
+//                        if(tray.getCell((i+1)%tray.getSize(), j).getIsAlive())
+//                                voisins++;
+//
+//                        if(tray.getCell((i+1+tray.getSize())%tray.getSize(), (j+1+tray.getSize())%tray.getSize()).getIsAlive())
+//                                voisins++;
+//
+//                        if(tray.getCell(i, (j+1)%tray.getSize()).getIsAlive())
+//                                voisins++;
+//
+//                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j+1)%tray.getSize()).getIsAlive())
+//                                voisins++;
+//
+//                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), j).getIsAlive())
+//                                voisins++;
+
+                        int voisins = tray.cellNbAliveN(i, j);
+
+                        if(tray.getCell(i, j).getIsAlive()){
+                                //conditions de décès:
+                                if(voisins <= 1){
+
+                                    tv.ChangeCellState(i, j);
+                                }
+
+
+                        }else{
+                                //conditions de naissance:
+                                if(voisins == 3){
+                                        tv.ChangeCellState(i, j);
+                                }
+                        }
+                }
+            }
+        }
+    
 }
 
         

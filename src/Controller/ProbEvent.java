@@ -13,7 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import Modele.Tray;
-import Vue.Grid;
+import Modele.Grid;
 import Vue.Left;
 import Vue.TrayView;
 
@@ -43,9 +43,9 @@ public class ProbEvent {
                     myPopUp.setContentText("aucune selection");
                 } else if (option.get() == ButtonType.OK) {
                     double newProb= Double.parseDouble(left.getInitAlea().getText());
-                    Tray m=new Tray(vue.getMatrice().getSize(),newProb);
+                    Tray tray=new Tray(vue.getTray().getSize(),newProb);
                     vue.resetPlateau();
-                     vue.setMatrice(m);
+                     vue.setTray(tray);
                      vue.affichePlateau();
                     myPopUp.setContentText("done!");
                  } else if (option.get() == ButtonType.CANCEL) {

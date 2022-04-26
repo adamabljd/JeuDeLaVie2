@@ -11,14 +11,14 @@ package Modele;
  * @author adamsayedabouljoud
  */
 public class Cell {
-    Cell[][] cells;
+    private Cell[][] cells;
 
     private int minLife = 3;
     private int maxLife = 3;
     private int x;
     private int y;
-    private static final int mortSolitude = 1;
-    private static final int mortAsphyxie = 4;
+    private int mortSolitude = 1;
+    private int mortAsphyxie = 4;
     
     //states
     private boolean isAlive;
@@ -36,11 +36,11 @@ public class Cell {
     }
 
     //Number of alive neighbours
-    public void  nbAliveNeighbours(){
+    public int nbAliveNeighbours(int size){
         int c = 0;
-        for (int x=-1; x<=1; x++) {
-            for (int y = -1; y <= 1; y++) {
-                    if(cells[this.x + x][y + this.y].isAlive){
+        for (int i=-1; i<=1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                    if(cells[(this.x + i +size)%size][(j + this.y + size) %size].isAlive){
                      c++;}
   
             }
@@ -50,15 +50,23 @@ public class Cell {
            c=c-1;
         }
 
-        previousState = isAlive;
-        if (isAlive && (c <= mortSolitude || c >= mortAsphyxie)) {
-            previousState = false;
-        } else if (c >= minLife && c <= maxLife) {
-                nextState = true;
-        }
+        return c;
+//        previousState = isAlive;
+//        if (isAlive && (c <= mortSolitude || c >= mortAsphyxie)) {
+//            previousState = false;
+//        } else if (c >= minLife && c <= maxLife) {
+//                nextState = true;
+//        }
     }
     
+    
     //getters and setters
+    
+    public Cell[][] getCells(){
+        return this.cells;
+    }
+    
+    //states
     public boolean getIsAlive() {
         return this.isAlive;
     }
@@ -72,6 +80,8 @@ public class Cell {
     }
     
      
+    
+    //Poisition
     public int getX(){
         return x;
     }
@@ -89,6 +99,8 @@ public class Cell {
     }
      
     
+    
+    //lives
     public int getMaxLife(){
         return this.maxLife; 
     }
@@ -103,6 +115,24 @@ public class Cell {
    
     public void setMaxLife(int newMaxLife){
         this.maxLife = newMaxLife;
+    }
+    
+    
+    //Mort
+    public int getMSolitude(){
+        return this.mortSolitude;
+    }
+    
+    public int getMAsphyxie(){
+        return this.mortAsphyxie;
+    }
+    
+    public void setSolitude(int newS){
+        this.mortSolitude = newS;
+    }
+   
+   public void setAsphyxie(int newA){
+        this.mortAsphyxie = newA;
     }
     
 }

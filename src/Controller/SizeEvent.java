@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+import Modele.Grid;
 import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -45,9 +46,9 @@ public class SizeEvent {
                 } else if (option.get() == ButtonType.OK) {
                      int newSize= Integer.parseInt(left.getTailleP().getText());
                     Grid g=new Grid(newSize);
-                    vue.setGrille(g);
+                    vue.setGrid(g);
                     vue.affichePlateau();
-                    root.setCenter(vue.getGrille());
+                    root.setCenter(vue.getGrid());
                     myPopUp.setContentText("done!");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");

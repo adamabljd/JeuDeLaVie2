@@ -10,15 +10,15 @@ package Modele;
  * @author Perso
  */
 public class exemplaire2 {
-    Tray matrice;
+    Tray tray;
      
     public exemplaire2(){
-         matrice=new Tray(10,0.09);
+         tray=new Tray(10,0.09);
     }
     
     
     public Tray getMatrice(){
-        return matrice;
+        return tray;
     }
     
 }
