@@ -14,11 +14,11 @@ import javafx.scene.control.Button;
 
 /**
  *
- * @author Perso
+ * @author ahmadnajjar
  */
 public class QuitEvent {
     
-    Button quit;
+    private Button quit;
     
     public QuitEvent(Button quit){
         this.quit = quit; 

@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Vue.Left;
+import Vue.ZoneParametersView;
 import Vue.TrayView;
 import static java.lang.Integer.parseInt;
 import java.util.Optional;
@@ -18,19 +18,19 @@ import javafx.scene.control.ComboBox;
  * @author adamsayedabouljoud
  */
 public class vieMaxEvent {
-    Left left; 
-   TrayView vue;
+   private ZoneParametersView zpv; 
+   private TrayView trayView;
    
-  public vieMaxEvent(Left left, TrayView vue){
-       this.left = left;
-       this.vue = vue;
+  public vieMaxEvent(ZoneParametersView zpv, TrayView trayView){
+       this.zpv = zpv;
+       this.trayView = trayView;
        
-       ComboBox vieMin = left.getVieMin();
-       ComboBox vieMax = left.getVieMax(); 
+       ComboBox vieMin = zpv.getVieMin();
+       ComboBox vieMax = zpv.getVieMax(); 
        
        vieMax.setOnAction(e -> { 
-            int selectedMin = vue.getTray().getMinLifeFromCell();
-            String selectedMax = (String) left.getVieMax().getValue();
+            int selectedMin = trayView.getTray().getMinLifeFromCell();
+            String selectedMax = (String) zpv.getVieMax().getValue();
             int sMax = parseInt(selectedMax);
 
             if (selectedMin>sMax){
@@ -46,10 +46,10 @@ public class vieMaxEvent {
                 Optional<ButtonType> option = myPopUp.showAndWait();
 
                 if (option.get() == null) {
-                    myPopUp.setContentText("aucune selection");
+                    myPopUp.setContentText("NO SELECTION!");
                 } else if (option.get() == ButtonType.OK) {
-                    vue.getTray().changeMinLife(sMax);
-                    myPopUp.setContentText("aucune selection");
+                    trayView.getTray().changeMinLife(sMax);
+                    myPopUp.setContentText("SUCCESS!");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");
                  }

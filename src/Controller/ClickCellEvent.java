@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Vue.Grid;
+import Vue.GridView;
 import java.awt.event.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,20 +19,20 @@ import Vue.*;
  * @author adamsayedbouljoud
  */
 public class ClickCellEvent {
-    private Grid g;
-    private TrayView v;
+    private GridView grid;
+    private TrayView trayView;
     private ButtonStartPause btn;
     
-    public ClickCellEvent(Grid g,TrayView v){
-        this.g=g;    
-        this.v=v;
+    public ClickCellEvent(GridView grid,TrayView trayView){
+        this.grid = grid;    
+        this.trayView = trayView;
            
-        for(int i=1;i<=g.getSize();i++){
-           for(int j=1;j<=g.getSize();j++){
-               int row=i;
-               int column=j;
-               g.getlabel(i, j).setOnMouseClicked((event)-> {
-                   v.ChangeCellState(row, column);});
+        for(int i = 1; i <= grid.getSize(); i++){
+           for(int j = 1; j <= grid.getSize(); j++){
+               int x = i;
+               int y = j;
+               grid.getlabelFromGrid(i, j).setOnMouseClicked((event)-> {
+                   trayView.ChangeCellState(x, y);});
             }
            
            }

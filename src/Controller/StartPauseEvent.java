@@ -13,7 +13,7 @@ import Modele.*;
 
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */
 public class StartPauseEvent {
     
@@ -25,7 +25,7 @@ public class StartPauseEvent {
         this.btn = btn;
         this.tray = tray;
         this.tv = tv;
-         Ecouteur e = new Ecouteur();
+        Ecouteur e = new Ecouteur();
         btn.addEventHandler(ActionEvent.ACTION, e);
     }
     
@@ -42,7 +42,7 @@ public class Ecouteur implements EventHandler{
                 btn.setCurrentImg(2); 
                 btn.setIsActive(true);
                 System.out.println(btn.getIsActive());
-                runev();
+                runev(btn.getIsActive());
             }
             
             else {
@@ -51,6 +51,7 @@ public class Ecouteur implements EventHandler{
                 btn.setCurrentImg(1); 
                 btn.setIsActive(false);
                 System.out.println(btn.getIsActive());
+                runev(btn.getIsActive());
             }
             
         }
@@ -58,43 +59,42 @@ public class Ecouteur implements EventHandler{
     }
 
 
-    public void runev(){
-        
-            for(int i = 0 ; i < tray.getCellNb(); i++){
-                for (int j = 0 ; j < tray.getCellNb(); j++){
+    public void runev(boolean play){
+        while(play){
+            for(int i = 1 ; i <= tray.getCellNb(); i++){
+                for (int j = 1 ; j <= tray.getCellNb(); j++){
 
-//                        int voisins = 0;
-//
-//                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
-//                                voisins++;
-//
-//                        if(tray.getCell(i,(j-1+tray.getSize())%tray.getSize()).getIsAlive())
-//                                voisins++;
-//
-//                        if(tray.getCell((i+1)%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
-//                                voisins++;
-//
-//                        if(tray.getCell((i+1)%tray.getSize(), j).getIsAlive())
-//                                voisins++;
-//
-//                        if(tray.getCell((i+1+tray.getSize())%tray.getSize(), (j+1+tray.getSize())%tray.getSize()).getIsAlive())
-//                                voisins++;
-//
-//                        if(tray.getCell(i, (j+1)%tray.getSize()).getIsAlive())
-//                                voisins++;
-//
-//                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j+1)%tray.getSize()).getIsAlive())
-//                                voisins++;
-//
-//                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), j).getIsAlive())
-//                                voisins++;
+                        int voisins = 0;
 
-                        int voisins = tray.cellNbAliveN(i, j);
+                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
+                                voisins++;
+
+                        if(tray.getCell(i,(j-1+tray.getSize())%tray.getSize()).getIsAlive())
+                                voisins++;
+
+                        if(tray.getCell((i+1)%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
+                                voisins++;
+
+                        if(tray.getCell((i+1)%tray.getSize(), j).getIsAlive())
+                                voisins++;
+
+                        if(tray.getCell((i+1+tray.getSize())%tray.getSize(), (j+1+tray.getSize())%tray.getSize()).getIsAlive())
+                                voisins++;
+
+                        if(tray.getCell(i, (j+1)%tray.getSize()).getIsAlive())
+                                voisins++;
+
+                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j+1)%tray.getSize()).getIsAlive())
+                                voisins++;
+
+                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), j).getIsAlive())
+                                voisins++;
+
+//                        int voisins = tray.cellNbAliveN(i, j);
 
                         if(tray.getCell(i, j).getIsAlive()){
                                 //conditions de décès:
                                 if(voisins <= 1){
-
                                     tv.ChangeCellState(i, j);
                                 }
 
@@ -107,6 +107,8 @@ public class Ecouteur implements EventHandler{
                         }
                 }
             }
+        }
+            
         }
     
 }

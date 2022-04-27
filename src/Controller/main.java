@@ -6,7 +6,7 @@
 package Controller;
 
 
-import Vue.Grid;
+import Vue.GridView;
 import Vue.*;
 import Controller.*;
 import javafx.application.Application;
@@ -45,9 +45,9 @@ public class main extends Application {
         TrayView trayView= new TrayView(tray);
         
         
-        Grid center = trayView.getGrid();
-        Right right = new Right();
-        Left left= new Left();
+        GridView center = trayView.getGrid();
+        ZoneTamponView right = new ZoneTamponView();
+        ZoneParametersView left= new ZoneParametersView();
         
        
        //events
@@ -58,7 +58,7 @@ public class main extends Application {
         TrayView trayView1= new TrayView(t1.getTrayT1());
         TrayView trayView2= new TrayView(t2.getTrayT2());
         
-        ExemplaireEvent exmplaireEvent= new ExemplaireEvent(trayView1,trayView2,right);
+        TamponEvent exmplaireEvent= new TamponEvent(trayView1,trayView2,right);
         
         //bouton quit
         QuitEvent quit = new QuitEvent(right.getBorderQuit().getBorderWithQuitEH());

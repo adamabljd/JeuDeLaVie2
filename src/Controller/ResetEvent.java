@@ -16,18 +16,18 @@ import Vue.*;
 
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */
 public class ResetEvent {
-    Left left;
-    TrayView vue;
+    private ZoneParametersView zpv;
+    private TrayView trayView;
     
     
-    public ResetEvent(Left left, TrayView vue){
-        this.left=left;
-        this.vue=vue;
+    public ResetEvent(ZoneParametersView zpv, TrayView trayView){
+        this.zpv=zpv;
+        this.trayView=trayView;
         
-        left.getReset().setOnAction(new EventHandler() {
+        zpv.getReset().setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
                  Alert myPopUp = new Alert(Alert.AlertType.CONFIRMATION);
@@ -36,10 +36,10 @@ public class ResetEvent {
                  Optional<ButtonType> option = myPopUp.showAndWait();
 
                 if (option.get() == null) {
-                    myPopUp.setContentText("aucune selection");
+                    myPopUp.setContentText("NO SELECTION");
                 } else if (option.get() == ButtonType.OK) {
-                    vue.resetPlateau();
-                    myPopUp.setContentText("done!");
+                    trayView.resetTray();
+                    myPopUp.setContentText("SUCCESS!");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");
                  }

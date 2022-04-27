@@ -23,14 +23,14 @@ import javafx.scene.layout.Pane;
  */
 public class SolitudeEvent {
     
-   Left left; 
-   TrayView vue;
+   ZoneParametersView zpv; 
+   TrayView trayView;
    
-  public SolitudeEvent(Left left, TrayView vue){
-       this.left = left;
-       this.vue = vue;
+  public SolitudeEvent(ZoneParametersView zpv, TrayView trayView){
+       this.zpv = zpv;
+       this.trayView = trayView;
        
-       ComboBox sol= left.getMSolitude();
+       ComboBox sol= zpv.getMSolitude();
         String firstValue = (String) sol.getValue();
        
        sol.setOnAction(e -> { 
@@ -44,10 +44,10 @@ public class SolitudeEvent {
                 Optional<ButtonType> option = myPopUp.showAndWait();
 
                 if (option.get() == null) {
-                    myPopUp.setContentText("aucune selection");
+                    myPopUp.setContentText("NO SELECTION");
                 } else if (option.get() == ButtonType.OK) {
-                    vue.getTray().changeSolitude(sSol);
-                    myPopUp.setContentText("aucune selection");
+                    trayView.getTray().changeSolitude(sSol);
+                    myPopUp.setContentText("SUCCESS!");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");
                  }

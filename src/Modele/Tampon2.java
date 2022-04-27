@@ -7,7 +7,7 @@ package Modele;
 
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */
 public class Tampon2 {
     Tray tray;

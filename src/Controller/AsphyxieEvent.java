@@ -23,18 +23,18 @@ import javafx.scene.layout.Pane;
  */
 public class AsphyxieEvent {
     
-   Left left; 
-    TrayView vue;
+   private ZoneParametersView zpv; 
+   private TrayView trayView;
    
-  public AsphyxieEvent(Left left, TrayView vue){
-       this.left = left;
-       this.vue = vue;
+  public AsphyxieEvent(ZoneParametersView zpv, TrayView trayView){
+       this.zpv = zpv;
+       this.trayView = trayView;
        
-       ComboBox asph = left.getMAsphyxie();
+       ComboBox asph = zpv.getMAsphyxie();
        
        asph.setOnAction(e -> { 
                 
-                String selectedAsph = (String) left.getMAsphyxie().getValue();
+                String selectedAsph = (String) zpv.getMAsphyxie().getValue();
                 int sAsph= parseInt(selectedAsph);
                 
                 Alert myPopUp = new Alert(AlertType.CONFIRMATION);
@@ -43,10 +43,10 @@ public class AsphyxieEvent {
                 Optional<ButtonType> option = myPopUp.showAndWait();
 
                 if (option.get() == null) {
-                    myPopUp.setContentText("aucune selection");
+                    myPopUp.setContentText("NO SELECTION!");
                 } else if (option.get() == ButtonType.OK) {
-                    vue.getTray().changeAsphyxie(sAsph);
-                    myPopUp.setContentText("aucune selection");
+                    trayView.getTray().changeAsphyxie(sAsph);
+                    myPopUp.setContentText("SUCCESS!");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");
                  }

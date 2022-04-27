@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Vue.Grid;
+import Vue.GridView;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;
@@ -17,9 +17,9 @@ import Vue.*;
  */
 public class ZoomEvent {
     
-    private Grid grid; 
+    private GridView grid; 
     
-    public ZoomEvent(Grid grid){
+    public ZoomEvent(GridView grid){
         this.grid = grid;
         
         grid.setOnScroll(

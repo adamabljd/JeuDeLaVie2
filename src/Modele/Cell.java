@@ -22,23 +22,21 @@ public class Cell {
     private int mortAsphyxie = 4;
     
     private boolean isAlive;
-    private boolean previousState;
-    private boolean nextState;
+
 
     //=======================================CONSTRUCTOR=========================
-    public Cell(Cell[][] cells, int x, int y, boolean alive) {
+    
+    public Cell(Cell[][] cells, int x, int y, boolean isAlive) {
         this.x = x;
         this.y = y;
         this.cells = cells;
-        this.isAlive = alive;
-        this.previousState = alive;;
-        this.nextState = alive;   
+        this.isAlive = isAlive;
     }
 
     //==================================FUNCTIONS=================================
     
-    //Number of neighbours alive for each cell in cells
-    public int nbAliveNeighbours(int size){
+    //return number of neighbours alive for each cell in cells
+    public int nbNeighboursAlive(int size){
         int nb = 0;
         for (int i=-1; i<=1; i++) {
             for (int j = -1; j <= 1; j++) {
@@ -47,7 +45,7 @@ public class Cell {
   
             }
         }
-        // enlever si on compte la cellule où on est
+      
         if (cells[this.x][this.y].isAlive){
            nb-=1;
         }
@@ -62,7 +60,7 @@ public class Cell {
         return this.cells;
     }
     
-    //states
+    //States
     public boolean getIsAlive() {
         return this.isAlive;
     }
@@ -71,12 +69,7 @@ public class Cell {
         this.isAlive = newA;
     }
     
-    public boolean getNextState() {
-        return this.nextState;
-    }
-    
-    
-    //Poisition
+    //Position
     public int getX(){
         return x;
     }
@@ -94,7 +87,7 @@ public class Cell {
     }
      
     
-    //lives
+    //Lives
     public int getMaxLife(){
         return this.maxLife; 
     }

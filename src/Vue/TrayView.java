@@ -8,78 +8,76 @@ import Modele.*;
 
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */
 public class TrayView {
     
-    private Grid g;
+    private GridView grid;
     private Tray tray;
     private ButtonStartPause btn;
     
     
     public TrayView(Tray tray){
         this.tray=tray;
-        g=new Grid(tray.getCellNb());
-        this.affichePlateau();
+        grid = new GridView(tray.getCellNb());
+        this.displayTray();
         btn = new ButtonStartPause(60);
         
+        this.grid.setStyle("-fx-border-color: black");
     }
             
-    
-    public void affichePlateau(){
+    //affiche le tray avec les couleurs qu'il faut
+    public void displayTray(){
         for(int i=0;i<tray.getCellTab().length;i++){
             for(int j=0;j<tray.getCellTab()[i].length ;j++){
                 if(tray.getCell(i,j).getIsAlive()){
-                    g.setCellAliveColor(i, j);
+                    grid.setCellAliveColor(i, j);
                 }
             }
         }
     }
     
-    
-    
-    
-    
-   public void resetPlateau(){
+    //vide le tray, il met chaque cell en blanc
+    public void resetTray(){
        for(int i=0;i<tray.getCellTab().length;i++){
             for(int j=0;j<tray.getCellTab()[i].length ;j++){
-                g.setCellDeadColor(i, j);
+                grid.setCellDeadColor(i, j);
             }
        }
-   }
+    }
    
+    //Change l'etat de la cell en i j du cells
    public void ChangeCellState(int i,int j){
-       //this.m.game(i, j);
-       //bede a3mol access lal left.buttonstartpause mechen tezbat el alive aw dead
         if(this.tray.getCell(i, j).getIsAlive() == false){
             System.out.println("Cell is now alive");
-            this.g.setCellAliveColor(i, j);
+            this.grid.setCellAliveColor(i, j);
             this.tray.getCell(i, j).setIsAlive(true);
-        }
-        else if(this.tray.getCell(i, j).getIsAlive() == true){
-               this.g.setCellDeadColor(i, j);
-               System.out.println("sell is dead");
+            
+        }else if(this.tray.getCell(i, j).getIsAlive() == true){
+               this.grid.setCellDeadColor(i, j);
+               System.out.println("Cell is dead");
                this.tray.getCell(i, j).setIsAlive(false);
-             }
-       
-   }
-    
-    public Grid getGrid(){
-        return g;
+            }   
     }
-     public void setGrid(Grid gr){
-        this.g=gr;
+    
+    public GridView getGrid(){
+        return this.grid;
+    }
+    
+    public void setGrid(GridView newG){
+        this.grid = newG;
     }
     
     public Tray getTray(){
         return this.tray;
     }
-    public void setTraySize(int size){
-        this.tray.setSize(size);
+    
+    public void setTray(Tray newTray){
+        this.tray = newTray;
     }
     
-    public void setTray(Tray tray){
-        this.tray = tray;
+    public void setTraySize(int size){
+        this.tray.setSize(size);
     }
     
 }

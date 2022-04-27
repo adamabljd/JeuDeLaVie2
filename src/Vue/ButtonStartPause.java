@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
 
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */ 
 
 public class ButtonStartPause extends Button {
@@ -30,7 +30,7 @@ public class ButtonStartPause extends Button {
     
     private int currentImage = 1;
     private int size;
-    //3m fakir e5teru3 boolean esmo isActive w el le3be ma btemche ela iza ken true. 
+    
     boolean isActive = false;
     
     ButtonStartPause(int size){

@@ -14,29 +14,35 @@ import java.util.Random;
 public class Tray {
     
     //=================================VARIABLES================================
-    private Cell[][] cells;
+    
     
     //Tray size
-    private int size;
     //Number of cells for row and column
+    private int size;
     private int cellNb;
     
     //Pourcentage de cellules vivantes initialement
-    private double probability;
+    private double percent;
+    
+    //Cells 2d array
+    private Cell[][] cells;
+    
+    
 
 
     //===============================CONSTRUCTOR================================
-    public Tray(int size, double probability, int cellNb) {
+    
+    public Tray(int size, double percent, int cellNb) {
         this.size = size;
         this.cellNb = cellNb;
+        this.percent = percent;
         cells = new Cell[cellNb][cellNb];
-        this.probability = probability;
         initTray();
     }
 
     //===============================FUNCTIONS==================================
     
-    //Cree cree les cells pour la matrice cells[][],
+    //Cree les cells pour la matrice cells[][],
     //et remplie leurs states randomly
     private void initTray() {
         for (int i = 0; i < this.cellNb; i++)
@@ -48,24 +54,28 @@ public class Tray {
 
 
     //cree un tableau de boolean avec une probabilite,
-    //met  des valeurs true par hasard, 
+    //met des valeurs true par hasard, 
     //et puis il les relie avec chaque cell du cells
     private void initStateRandomly(){
         Random r = new Random();
-        boolean[][] t=new boolean[this.cellNb][this.cellNb];
-        int nbCases= this.cellNb * this.cellNb;
-        double caseAleatoire= nbCases*this.probability;
-        double n=0.0;
-        while(n<caseAleatoire){
+       
+        boolean[][] tab = new boolean[this.cellNb][this.cellNb];
+        
+        int nbBox = this.cellNb * this.cellNb;
+        
+        double randomBox = nbBox * this.percent;
+        double n = 0.0;
+        
+        while(n < randomBox){
             int i = r.nextInt(this.cellNb);
-            int j=r.nextInt(this.cellNb);
-            t[i][j]=true;
+            int j = r.nextInt(this.cellNb);
+            tab[i][j]=true;
             n++;
         }
         
-       for(int i=0;i<t.length;i++){
-           for(int j=0;j<t[i].length;j++){
-               if(t[i][j]==true){
+       for(int i=0;i<tab.length;i++){
+           for(int j=0;j<tab[i].length;j++){
+               if(tab[i][j] == true){
                    cells[i][j].setIsAlive(true);
                }
            }
@@ -75,7 +85,7 @@ public class Tray {
     
     //Retourn le nb de voisins vivant de la cell en i et j du cells
     public int cellNbAliveN(int i,int j){
-       return cells[i][j].nbAliveNeighbours(this.cellNb);
+       return cells[i][j].nbNeighboursAlive(this.cellNb);
     }
     
     public void changeMinLife(int min){
@@ -131,12 +141,12 @@ public class Tray {
         return this.cells[i][j];
     }
 
-    public double getProba(){
-        return this.probability;
+    public double getPercent(){
+        return this.percent;
     }
 
-    public void setProba(double proba){
-        this.probability = proba;
+    public void setPercent(double newP){
+        this.percent = newP;
     }
      
     //Meme valeurs pour chaque cell, 

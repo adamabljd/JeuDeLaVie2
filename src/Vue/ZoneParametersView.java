@@ -5,76 +5,85 @@
  */
 package Vue;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.geometry.Insets;
+import javafx.scene.control.ComboBox;
+import javafx.geometry.Pos;
+import javafx.scene.control.TextField;
 
 /**
  *
  * @author Perso
  */
-public class Left extends VBox{
-    private TextField tailleP;
+public class ZoneParametersView extends VBox{
+    private Button resetBtn;
+    private Button randomInitBtn;
     private ButtonStartPause buttonSP; 
-    private Button reset;
-    private Button prob;
-    private TextField initAlea;
-    private ComboBox vieMin;
-    private ComboBox vieMax;
+    
+    private TextField traySize;
+    private TextField percentage;
+    
     private ComboBox mSolitude;
     private ComboBox mAsphyxie;
+    private ComboBox vieMin;
+    private ComboBox vieMax;
     
-    public Left(){
+    public ZoneParametersView(){
         
-        //edition du plateau
-        VBox edition= new VBox();
-        Label label=new Label("Edition du plateau");
+        
+        VBox top = new VBox();
+        
+        Label label=new Label("Tray Size");
         label.setAlignment(Pos.CENTER);
-        tailleP= new TextField();
-        tailleP.setPromptText("entrer la taille du plateau");
-        reset= new Button("Reset");
-        initAlea = new TextField();
-        initAlea.setPromptText("entrer une probabilité ");
-        prob = new Button("Initialisation aleatoire"); 
-        edition.getChildren().addAll(label,tailleP,reset,initAlea, prob);
-        edition.setSpacing(5);
+        
+        traySize = new TextField();
+        traySize.setPromptText("Enter size");
+        
+        resetBtn= new Button("Reset");
+        
+        percentage = new TextField();
+        percentage.setPromptText("Enter a percentage");
+        
+        randomInitBtn = new Button("Random Init"); 
+        
+        top.getChildren().addAll(label, traySize, resetBtn, percentage, randomInitBtn);
+        top.setSpacing(5);
         
         //parametre du jeu 
         VBox center = new VBox();
         
-        Label mortsolitude = new Label("mort solitude"); 
+        Label mortsolitude = new Label("Mort solitude"); 
         mSolitude = new ComboBox();
         mSolitude.getItems().addAll("0","1","2","3","4","5","6","7","8");
         mSolitude.setValue("1");
         
-        Label mortasphyxie = new Label("mort asphyxie"); 
+        Label mortasphyxie = new Label("Mort asphyxie"); 
         mAsphyxie = new ComboBox();
         mAsphyxie.getItems().addAll("0","1","2","3","4","5","6","7","8");
         mAsphyxie.setValue("4");
 
-        Label viemin = new Label("vie Min"); 
+        Label viemin = new Label("Vie Min"); 
         vieMin = new ComboBox();
         vieMin.getItems().addAll("0","1","2","3","4","5","6","7","8");
         vieMin.setValue("3");
         
-        Label viemax = new Label("vie Max"); 
+        Label viemax = new Label("Vie Max"); 
         vieMax = new ComboBox();
         vieMax.getItems().addAll("0","1","2","3","4","5","6","7","8");
         vieMax.setValue("3");
         
         center.setSpacing(5);
         center.getChildren().addAll(mortsolitude, mSolitude, mortasphyxie, mAsphyxie, viemin, vieMin, viemax, vieMax);
-        //buttonstartPause
-        buttonSP=new ButtonStartPause(60);
+        
+        buttonSP = new ButtonStartPause(60);
         
         this.setAlignment(Pos.CENTER);
         this.setPadding(new Insets(10));
         this.setSpacing(180);
-        this.getChildren().addAll(edition,center,buttonSP);
+        this.getChildren().addAll(top, center, buttonSP);
     }
     
     public ButtonStartPause getbuttonSP(){
@@ -82,18 +91,18 @@ public class Left extends VBox{
     }
     
     public Button getReset(){
-        return this.reset;
+        return this.resetBtn;
     }
-    public TextField getTailleP(){
-            return this.tailleP;
-    }
-    
-    public Button getProb(){
-        return this.prob;
+    public TextField getTraySize(){
+            return this.traySize;
     }
     
-    public TextField getInitAlea(){
-            return this.initAlea;
+    public Button getRandomInitBtn(){
+        return this.randomInitBtn;
+    }
+    
+    public TextField getPercentage(){
+            return this.percentage;
     }
     
     

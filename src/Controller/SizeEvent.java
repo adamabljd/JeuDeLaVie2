@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
-import Vue.Grid;
+import Vue.GridView;
 import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -19,22 +19,22 @@ import Vue.*;
 
 /**
  *
- * @author Perso
+ * @author ahmadnajjar
  */
 public class SizeEvent {
-    Left left;
-    BorderPane root;
-    TrayView vue; 
+    private ZoneParametersView zpv;
+    private BorderPane root;
+    private TrayView trayView; 
     
     
-    public SizeEvent(Left left,BorderPane root, TrayView vue){
-        this.left=left;
+    public SizeEvent(ZoneParametersView zpv,BorderPane root, TrayView trayView){
+        this.zpv=zpv;
         this.root=root;
-        this.vue = vue;
+        this.trayView = trayView;
         
         
     
-     left.getTailleP().setOnKeyPressed( event -> {
+     zpv.getTraySize().setOnKeyPressed(event -> {
         if( event.getCode() == KeyCode.ENTER ) {
             Alert myPopUp = new Alert(Alert.AlertType.CONFIRMATION);
                 myPopUp.setTitle("CONFIRMATION");
@@ -42,14 +42,14 @@ public class SizeEvent {
                  Optional<ButtonType> option = myPopUp.showAndWait();
 
                 if (option.get() == null) {
-                    myPopUp.setContentText("aucune selection");
+                    myPopUp.setContentText("NO SELECTION!");
                 } else if (option.get() == ButtonType.OK) {
-                     int newSize= Integer.parseInt(left.getTailleP().getText());
-                    Grid g=new Grid(newSize);
-                    vue.setGrid(g);
-                    vue.affichePlateau();
-                    root.setCenter(vue.getGrid());
-                    myPopUp.setContentText("done!");
+                     int newSize= Integer.parseInt(zpv.getTraySize().getText());
+                    GridView g=new GridView(newSize);
+                    trayView.setGrid(g);
+                    trayView.displayTray();
+                    root.setCenter(trayView.getGrid());
+                    myPopUp.setContentText("SUCCESS!");
                  } else if (option.get() == ButtonType.CANCEL) {
                       myPopUp.setContentText("Cancelled!");
                  }
