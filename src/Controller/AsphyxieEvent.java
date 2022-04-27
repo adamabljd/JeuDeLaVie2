@@ -40,6 +40,7 @@ public class AsphyxieEvent {
                 Alert myPopUp = new Alert(AlertType.CONFIRMATION);
                 myPopUp.setTitle("CONFIRMATION");
                 myPopUp.setHeaderText("Voulez-vous vraiment modifier la valeur du parametre mortAsphyxie?");
+                
                 Optional<ButtonType> option = myPopUp.showAndWait();
 
                 if (option.get() == null) {

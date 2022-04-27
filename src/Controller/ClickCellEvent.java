@@ -27,8 +27,8 @@ public class ClickCellEvent {
         this.grid = grid;    
         this.trayView = trayView;
            
-        for(int i = 1; i <= grid.getSize(); i++){
-           for(int j = 1; j <= grid.getSize(); j++){
+        for(int i = 1; i < grid.getSize(); i++){
+           for(int j = 1; j < grid.getSize(); j++){
                int x = i;
                int y = j;
                grid.getlabelFromGrid(i, j).setOnMouseClicked((event)-> {

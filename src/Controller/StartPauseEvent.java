@@ -42,7 +42,7 @@ public class Ecouteur implements EventHandler{
                 btn.setCurrentImg(2); 
                 btn.setIsActive(true);
                 System.out.println(btn.getIsActive());
-                runev(btn.getIsActive());
+                nextGeneration(btn.getIsActive());
             }
             
             else {
@@ -51,7 +51,7 @@ public class Ecouteur implements EventHandler{
                 btn.setCurrentImg(1); 
                 btn.setIsActive(false);
                 System.out.println(btn.getIsActive());
-                runev(btn.getIsActive());
+                
             }
             
         }
@@ -59,57 +59,46 @@ public class Ecouteur implements EventHandler{
     }
 
 
-    public void runev(boolean play){
-        while(play){
-            for(int i = 1 ; i <= tray.getCellNb(); i++){
-                for (int j = 1 ; j <= tray.getCellNb(); j++){
 
-                        int voisins = 0;
+    public void nextGeneration(boolean play){
+        
+            // Loop through every cell
+                for (int l = 1; l < tray.getCellNb(); l++)
+                {
+                    for (int m = 1; m < tray.getCellNb(); m++)
+                    {
+                        // finding no Of Neighbours that are alive
+                        int aliveNeighbours = 0;
+                        for (int i = -1; i <= 1; i++)
+                            for (int j = -1; j <= 1; j++)
+                              if ((l+i>=1 && l+i<tray.getCellNb()) && (m+j>=1 && m+j<tray.getCellNb()))
+                                  if(tray.getCell(l + i,m + j).getIsAlive())
+                                        aliveNeighbours ++;
 
-                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
-                                voisins++;
+                        // The cell needs to be subtracted from
+                        // its neighbours as it was counted before
+                        if(tray.getCell(l , m).getIsAlive()){
+                            aliveNeighbours-=1;
 
-                        if(tray.getCell(i,(j-1+tray.getSize())%tray.getSize()).getIsAlive())
-                                voisins++;
-
-                        if(tray.getCell((i+1)%tray.getSize(), (j-1+tray.getSize())%tray.getSize()).getIsAlive())
-                                voisins++;
-
-                        if(tray.getCell((i+1)%tray.getSize(), j).getIsAlive())
-                                voisins++;
-
-                        if(tray.getCell((i+1+tray.getSize())%tray.getSize(), (j+1+tray.getSize())%tray.getSize()).getIsAlive())
-                                voisins++;
-
-                        if(tray.getCell(i, (j+1)%tray.getSize()).getIsAlive())
-                                voisins++;
-
-                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), (j+1)%tray.getSize()).getIsAlive())
-                                voisins++;
-
-                        if(tray.getCell((i-1+tray.getSize())%tray.getSize(), j).getIsAlive())
-                                voisins++;
-
-//                        int voisins = tray.cellNbAliveN(i, j);
-
-                        if(tray.getCell(i, j).getIsAlive()){
-                                //conditions de décès:
-                                if(voisins <= 1){
-                                    tv.ChangeCellState(i, j);
-                                }
-
-
-                        }else{
-                                //conditions de naissance:
-                                if(voisins == 3){
-                                        tv.ChangeCellState(i, j);
-                                }
                         }
+                        // Implementing the Rules of Life
+
+                        // Cell is lonely and dies
+                        if ((tray.getCell(l , m).getIsAlive()) && (aliveNeighbours < 2)){
+                            tv.ChangeCellState(l, m);
+                        }
+                        // Cell dies due to over population
+                        else if ((tray.getCell(l , m).getIsAlive()) && (aliveNeighbours > 3)){
+                            tv.ChangeCellState(l, m);
+                        }
+                        // A new cell is born
+                        else if ((tray.getCell(l , m).getIsAlive() == false) && (aliveNeighbours == 3)){
+                            tv.ChangeCellState(l, m);
+                        }
+                       
+                    }
                 }
             }
-        }
-            
-        }
     
 }
 

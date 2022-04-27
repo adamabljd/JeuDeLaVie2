@@ -13,12 +13,13 @@ import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 /**
  *
- * @author Perso
+ * @author adamsayedabouljoud
  */
-public class ZoneParametersView extends VBox{
+public class ZoneParametersView extends BorderPane{
     private Button resetBtn;
     private Button randomInitBtn;
     private ButtonStartPause buttonSP; 
@@ -32,58 +33,60 @@ public class ZoneParametersView extends VBox{
     private ComboBox vieMax;
     
     public ZoneParametersView(){
-        
-        
-        VBox top = new VBox();
-        
-        Label label=new Label("Tray Size");
+        Label label = new Label("Tray Size");
         label.setAlignment(Pos.CENTER);
         
         traySize = new TextField();
         traySize.setPromptText("Enter size");
         
-        resetBtn= new Button("Reset");
+        resetBtn = new Button("Reset");
         
         percentage = new TextField();
         percentage.setPromptText("Enter a percentage");
         
         randomInitBtn = new Button("Random Init"); 
         
+        VBox top = new VBox();
         top.getChildren().addAll(label, traySize, resetBtn, percentage, randomInitBtn);
         top.setSpacing(5);
+        top.setPadding(new Insets(4,4,4,4));
         
-        //parametre du jeu 
-        VBox center = new VBox();
+        //Mort et Vie
+        Label mortSolitudeLabel = new Label("Mort solitude"); 
         
-        Label mortsolitude = new Label("Mort solitude"); 
         mSolitude = new ComboBox();
         mSolitude.getItems().addAll("0","1","2","3","4","5","6","7","8");
         mSolitude.setValue("1");
         
-        Label mortasphyxie = new Label("Mort asphyxie"); 
+        Label mortAsphyxieLabel = new Label("Mort asphyxie"); 
+        
         mAsphyxie = new ComboBox();
         mAsphyxie.getItems().addAll("0","1","2","3","4","5","6","7","8");
         mAsphyxie.setValue("4");
 
-        Label viemin = new Label("Vie Min"); 
+        Label vieMinLabel = new Label("Vie Min"); 
+        
         vieMin = new ComboBox();
         vieMin.getItems().addAll("0","1","2","3","4","5","6","7","8");
         vieMin.setValue("3");
         
-        Label viemax = new Label("Vie Max"); 
+        Label vieMaxLabel = new Label("Vie Max"); 
+        
         vieMax = new ComboBox();
         vieMax.getItems().addAll("0","1","2","3","4","5","6","7","8");
         vieMax.setValue("3");
         
+        VBox center = new VBox();
         center.setSpacing(5);
-        center.getChildren().addAll(mortsolitude, mSolitude, mortasphyxie, mAsphyxie, viemin, vieMin, viemax, vieMax);
+        center.getChildren().addAll(mortSolitudeLabel, mSolitude, mortAsphyxieLabel, mAsphyxie, vieMinLabel, vieMin, vieMaxLabel, vieMax);
+        center.setPadding(new Insets(20,4,4,4));
         
         buttonSP = new ButtonStartPause(60);
         
-        this.setAlignment(Pos.CENTER);
+        this.setTop(top);
+        this.setCenter(center);
+        this.setBottom(buttonSP);
         this.setPadding(new Insets(10));
-        this.setSpacing(180);
-        this.getChildren().addAll(top, center, buttonSP);
     }
     
     public ButtonStartPause getbuttonSP(){
@@ -104,7 +107,6 @@ public class ZoneParametersView extends VBox{
     public TextField getPercentage(){
             return this.percentage;
     }
-    
     
     public ComboBox getVieMin(){
         return this.vieMin;

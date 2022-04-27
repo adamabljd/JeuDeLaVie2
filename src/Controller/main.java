@@ -58,7 +58,7 @@ public class main extends Application {
         TrayView trayView1= new TrayView(t1.getTrayT1());
         TrayView trayView2= new TrayView(t2.getTrayT2());
         
-        TamponEvent exmplaireEvent= new TamponEvent(trayView1,trayView2,right);
+        LoadTamponEvent exmplaireEvent= new LoadTamponEvent(trayView1,trayView2,right);
         
         //bouton quit
         QuitEvent quit = new QuitEvent(right.getBorderQuit().getBorderWithQuitEH());

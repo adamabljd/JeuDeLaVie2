@@ -36,11 +36,13 @@ public class GridView extends GridPane {
         this.size = size;
         this.setVgap(gap);
         this.setHgap(gap);
+        this.setStyle("-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 2");
+        this.setPadding(new Insets(2,2,2,2));
         
         this.grid = new Label[size + 1][size + 1]; 
         
-        for(int i = 1; i <= this.size; i++){
-           for(int j = 1; j <= this.size; j++){
+        for(int i = 1; i < this.size; i++){
+           for(int j = 1; j < this.size; j++){
            Label cell= new Label();
            cell.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
            cell.setPrefSize(cellSize, cellSize);

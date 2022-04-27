@@ -5,6 +5,7 @@
  */
 package Vue;
 import Modele.*;
+import javafx.geometry.Insets;
 
 /**
  *
@@ -23,13 +24,13 @@ public class TrayView {
         this.displayTray();
         btn = new ButtonStartPause(60);
         
-        this.grid.setStyle("-fx-border-color: black");
+        
     }
             
     //affiche le tray avec les couleurs qu'il faut
     public void displayTray(){
-        for(int i=0;i<tray.getCellTab().length;i++){
-            for(int j=0;j<tray.getCellTab()[i].length ;j++){
+        for(int i=1;i<tray.getCellTab().length;i++){
+            for(int j=1;j<tray.getCellTab()[i].length ;j++){
                 if(tray.getCell(i,j).getIsAlive()){
                     grid.setCellAliveColor(i, j);
                 }
@@ -39,8 +40,8 @@ public class TrayView {
     
     //vide le tray, il met chaque cell en blanc
     public void resetTray(){
-       for(int i=0;i<tray.getCellTab().length;i++){
-            for(int j=0;j<tray.getCellTab()[i].length ;j++){
+       for(int i=1;i<tray.getCellTab().length;i++){
+            for(int j=1;j<tray.getCellTab()[i].length ;j++){
                 grid.setCellDeadColor(i, j);
             }
        }
@@ -49,14 +50,13 @@ public class TrayView {
     //Change l'etat de la cell en i j du cells
    public void ChangeCellState(int i,int j){
         if(this.tray.getCell(i, j).getIsAlive() == false){
+            this.tray.getCell(i, j).setIsAlive(true);
             System.out.println("Cell is now alive");
             this.grid.setCellAliveColor(i, j);
-            this.tray.getCell(i, j).setIsAlive(true);
-            
         }else if(this.tray.getCell(i, j).getIsAlive() == true){
+            this.tray.getCell(i, j).setIsAlive(false);
                this.grid.setCellDeadColor(i, j);
                System.out.println("Cell is dead");
-               this.tray.getCell(i, j).setIsAlive(false);
             }   
     }
     

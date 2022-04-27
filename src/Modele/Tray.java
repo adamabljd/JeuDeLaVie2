@@ -45,8 +45,8 @@ public class Tray {
     //Cree les cells pour la matrice cells[][],
     //et remplie leurs states randomly
     private void initTray() {
-        for (int i = 0; i < this.cellNb; i++)
-            for (int j = 0; j < this.cellNb; j++) {
+        for (int i = 1; i < this.cellNb; i++)
+            for (int j = 1; j < this.cellNb; j++) {
                 cells[i][j] = new Cell(cells, i, j, false);
             }
         initStateRandomly();
@@ -73,8 +73,8 @@ public class Tray {
             n++;
         }
         
-       for(int i=0;i<tab.length;i++){
-           for(int j=0;j<tab[i].length;j++){
+       for(int i=1;i<tab.length;i++){
+           for(int j=1;j<tab[i].length;j++){
                if(tab[i][j] == true){
                    cells[i][j].setIsAlive(true);
                }
@@ -89,30 +89,30 @@ public class Tray {
     }
     
     public void changeMinLife(int min){
-         for (int i = 0; i < this.cellNb; i++)
-            for (int j = 0; j < this.cellNb; j++) {
+         for (int i = 1; i < this.cellNb; i++)
+            for (int j = 1; j < this.cellNb; j++) {
                 cells[i][j].setMinLife(min);
             }
     }
 
      public void changeMaxLife(int max){
-         for (int i = 0; i < this.cellNb; i++)
-            for (int j = 0; j < this.cellNb; j++) {
+         for (int i = 1; i < this.cellNb; i++)
+            for (int j = 1; j < this.cellNb; j++) {
                 cells[i][j].setMaxLife(max);
             }
     }
 
     public void changeAsphyxie(int a){
-        for (int i = 0; i < this.cellNb; i++){
-            for (int j = 0; j < this.cellNb; j++) {
+        for (int i = 1; i < this.cellNb; i++){
+            for (int j = 1; j < this.cellNb; j++) {
                 this.cells[i][j].setAsphyxie(a);
             }
         }   
     }     
      
     public void changeSolitude(int s){
-        for (int i = 0; i < this.cellNb; i++){
-            for (int j = 0; j < this.cellNb; j++) {
+        for (int i = 1; i < this.cellNb; i++){
+            for (int j = 1; j < this.cellNb; j++) {
                 this.cells[i][j].setSolitude(s);
             }
         } 

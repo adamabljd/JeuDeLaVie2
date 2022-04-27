@@ -10,25 +10,26 @@ import javafx.scene.control.ComboBox;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 /**
  *
  * @author ahmadnajjar
  */
-public class ZoneTamponView extends VBox {
+public class ZoneTamponView extends BorderPane {
     private GridView tampon; 
-    private Pane pane;
+    private Pane tamponPane;
     private ComboBox tamponBox;
     private VBox top;
     private Button loadBtn;
-    private BorderWithQuitEH quit; 
+    private BorderWithQuitEH quitBtn; 
             
    public ZoneTamponView(){
        tampon = new GridView(10);
        
-       pane = new Pane(); 
-       pane.getChildren().add(tampon);
+       tamponPane = new Pane(); 
+       tamponPane.getChildren().add(tampon);
        
        loadBtn = new Button("Load");
        
@@ -37,13 +38,13 @@ public class ZoneTamponView extends VBox {
        tamponBox.getSelectionModel().selectFirst();
        
        top = new VBox();
-       top.getChildren().addAll(pane, tamponBox, loadBtn);  
-       top.setSpacing(30);
+       top.getChildren().addAll(tamponPane, tamponBox, loadBtn);  
+       top.setSpacing(10);
        
-       quit = new BorderWithQuitEH();
+       quitBtn = new BorderWithQuitEH();
      
-       this.setSpacing(500);
-       this.getChildren().addAll(top, quit);
+       this.setTop(top);
+       this.setBottom(quitBtn);
        this.setPadding(new Insets(10));
        
    } 
@@ -54,12 +55,12 @@ public class ZoneTamponView extends VBox {
    }
     
    
-   public Pane getPane(){
-       return this.pane; 
+   public Pane getTamponPane(){
+       return this.tamponPane; 
    }
    
-   public void setPane(Pane newP){
-       this.pane = newP;
+   public void setTamponPane(Pane newTP){
+       this.tamponPane = newTP;
    }
     
    
@@ -73,7 +74,7 @@ public class ZoneTamponView extends VBox {
    
    
    public BorderWithQuitEH getBorderQuit(){
-       return this.quit; 
+       return this.quitBtn; 
    }
    
    
@@ -82,7 +83,7 @@ public class ZoneTamponView extends VBox {
    }
    
    
-   public VBox getTop(){
+   public VBox getTopTampon(){
        return this.top;
    }
 }
