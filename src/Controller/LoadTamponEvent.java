@@ -32,7 +32,6 @@ public class LoadTamponEvent {
 
         
   
-   //Ecouteur e = new Ecouteur();
    zpv.getLoadBtn().addEventHandler(ActionEvent.ACTION, e -> {
        if((zpv.getTamponBox()).getValue()== "Tampon 1"){
                  zpv.getTamponPane().getChildren().remove(zpv.getTampon());
@@ -47,16 +46,6 @@ public class LoadTamponEvent {
    });
    
    }
-    
-    
-//    public class Ecouteur implements EventHandler{
-//
-//        @Override
-//        public void handle(Event event) {
-//            
-//        }
-        
-    
-//}
+
     
 }

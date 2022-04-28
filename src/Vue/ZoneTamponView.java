@@ -23,6 +23,7 @@ public class ZoneTamponView extends BorderPane {
     private ComboBox tamponBox;
     private VBox top;
     private Button loadBtn;
+    private Button copyBtn;
     private BorderWithQuitEH quitBtn; 
             
    public ZoneTamponView(){
@@ -32,13 +33,14 @@ public class ZoneTamponView extends BorderPane {
        tamponPane.getChildren().add(tampon);
        
        loadBtn = new Button("Load");
+       copyBtn = new Button("Copy");
        
        tamponBox=new ComboBox();
        tamponBox.getItems().addAll("Tampon 1", "Tampon 2");
        tamponBox.getSelectionModel().selectFirst();
        
        top = new VBox();
-       top.getChildren().addAll(tamponPane, tamponBox, loadBtn);  
+       top.getChildren().addAll(tamponPane, tamponBox, loadBtn, copyBtn);  
        top.setSpacing(10);
        
        quitBtn = new BorderWithQuitEH();
@@ -82,6 +84,9 @@ public class ZoneTamponView extends BorderPane {
        return this.loadBtn; 
    }
    
+   public Button getCopyBtn(){
+       return this.copyBtn;
+   }
    
    public VBox getTopTampon(){
        return this.top;

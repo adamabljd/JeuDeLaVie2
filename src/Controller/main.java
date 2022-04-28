@@ -46,34 +46,35 @@ public class main extends Application {
         
         
         GridView center = trayView.getGrid();
-        ZoneTamponView right = new ZoneTamponView();
-        ZoneParametersView left= new ZoneParametersView();
+        ZoneTamponView ztp = new ZoneTamponView();
+        ZoneParametersView zpv = new ZoneParametersView();
         
        
        //events
        //combox jeux predifinis
-        Tampon1 t1=new Tampon1();
-        Tampon2 t2 =new Tampon2();
+        Tampon t1=new Tampon(10,0.4, 10);
+        Tampon t2 =new Tampon(10,0.09, 10);
         
-        TrayView trayView1= new TrayView(t1.getTrayT1());
-        TrayView trayView2= new TrayView(t2.getTrayT2());
+        TrayView trayView1= new TrayView(t1.getTamponTray());
+        TrayView trayView2= new TrayView(t2.getTamponTray());
         
-        LoadTamponEvent exmplaireEvent= new LoadTamponEvent(trayView1,trayView2,right);
+        LoadTamponEvent tamponEvent= new LoadTamponEvent(trayView1,trayView2,ztp);
+        CopyTamponEvent copyTamponEvent = new CopyTamponEvent(ztp);
         
         //bouton quit
-        QuitEvent quit = new QuitEvent(right.getBorderQuit().getBorderWithQuitEH());
+        QuitEvent quit = new QuitEvent(ztp.getBorderQuit().getBorderWithQuitEH());
         
         //button startPause 
-        StartPauseEvent sp = new StartPauseEvent(left.getbuttonSP(), tray, trayView);
+        StartPauseEvent sp = new StartPauseEvent(zpv.getbuttonSP(), tray, trayView);
         
         //textfield: changer la taille
-        SizeEvent sizeEvent=new SizeEvent(left,root,trayView);
+        SizeEvent sizeEvent=new SizeEvent(zpv,root,trayView);
         
         //button reset
-        ResetEvent resetEvent = new ResetEvent(left, trayView);
+        ResetEvent resetEvent = new ResetEvent(zpv, trayView);
        
         //InitAlea 
-        ProbEvent probEvent = new ProbEvent(left, trayView);
+        ProbEvent probEvent = new ProbEvent(zpv, trayView);
        
         //events on grid
         ClickCellEvent cl=new ClickCellEvent(center,trayView);
@@ -85,13 +86,13 @@ public class main extends Application {
         
         
         //events on vieMin
-        vieMinEvent vmin = new vieMinEvent(left, trayView);
+        vieMinEvent vmin = new vieMinEvent(zpv, trayView);
         //events on vieMax
-        vieMaxEvent vmax = new vieMaxEvent(left, trayView);
+        vieMaxEvent vmax = new vieMaxEvent(zpv, trayView);
         //mort Asph
-        AsphyxieEvent asp = new AsphyxieEvent(left, trayView);
+        AsphyxieEvent asp = new AsphyxieEvent(zpv, trayView);
         //mort solitude
-        SolitudeEvent mSol = new SolitudeEvent(left, trayView);
+        SolitudeEvent mSol = new SolitudeEvent(zpv, trayView);
            
         
         //events on grid 
@@ -99,8 +100,8 @@ public class main extends Application {
         
         
         root.setCenter(center);
-        root.setRight(right);
-        root.setLeft(left);      
+        root.setRight(ztp);
+        root.setLeft(zpv);      
         Scene scene = new Scene(root);        
         primaryStage.setTitle("Game Of Life");
         primaryStage.setScene(scene);

@@ -140,6 +140,10 @@ public class Tray {
     public Cell getCell(int i,int j){
         return this.cells[i][j];
     }
+    
+    public void setCell(int i,int j, Cell c){
+        this.cells[i][j] = c;
+    }
 
     public double getPercent(){
         return this.percent;
