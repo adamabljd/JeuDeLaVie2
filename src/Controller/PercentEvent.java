@@ -21,12 +21,12 @@ import Vue.TrayView;
  *
  * @author adamsayedabouljoud
  */
-public class ProbEvent {
+public class PercentEvent {
     
     private ZoneParametersView zpv;
     private TrayView trayView;
     
-    public ProbEvent(ZoneParametersView zpv, TrayView trayView){
+    public PercentEvent(ZoneParametersView zpv, TrayView trayView){
         this.zpv = zpv;
         this.trayView = trayView;
         

@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  *
- * @author adamsayedabouljoud
+ * @author ahmadnajjar
  */
 public class Tray {
     
@@ -83,10 +83,6 @@ public class Tray {
 
     }
     
-    //Retourn le nb de voisins vivant de la cell en i et j du cells
-    public int cellNbAliveN(int i,int j){
-       return cells[i][j].nbNeighboursAlive(this.cellNb);
-    }
     
     public void changeMinLife(int min){
          for (int i = 1; i < this.cellNb; i++)

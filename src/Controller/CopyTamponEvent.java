@@ -16,7 +16,7 @@ import javafx.scene.control.Button;
 
 /**
  *
- * @author adamsayedabouljoud
+ * @author ahmadnajjar
  */
 public class CopyTamponEvent {
     private ZoneTamponView zpv;

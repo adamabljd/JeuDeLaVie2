@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vue;
+import Modele.ButtonStartPause;
 import Modele.*;
 import javafx.geometry.Insets;
 
@@ -15,15 +16,12 @@ public class TrayView {
     
     private GridView grid;
     private Tray tray;
-    private ButtonStartPause btn;
     
     
     public TrayView(Tray tray){
         this.tray=tray;
         grid = new GridView(tray.getCellNb());
-        this.displayTray();
-        btn = new ButtonStartPause(60);
-        
+        this.displayTray();        
         
     }
             
@@ -55,8 +53,8 @@ public class TrayView {
             this.grid.setCellAliveColor(i, j);
         }else if(this.tray.getCell(i, j).getIsAlive() == true){
             this.tray.getCell(i, j).setIsAlive(false);
-               this.grid.setCellDeadColor(i, j);
-               System.out.println("Cell is dead");
+            this.grid.setCellDeadColor(i, j);
+            System.out.println("Cell is dead");
             }   
     }
     

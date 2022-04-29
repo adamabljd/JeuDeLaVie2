@@ -32,29 +32,7 @@ public class Cell {
         this.cells = cells;
         this.isAlive = isAlive;
     }
-
-    //==================================FUNCTIONS=================================
-    
-    //return number of neighbours alive for each cell in cells
-    public int nbNeighboursAlive(int size){
-        int aliveNeighbours = 0;
-//        for (int i=-1; i<=1; i++) {
-//            for (int j = -1; j <= 1; j++) {
-//                    if(cells[(this.x + i +size)%size][(j + this.y + size) %size].isAlive){
-//                     nb++;}
-//  
-//            }
-//        }
-
-      
-//        if (cells[this.x][this.y].isAlive){
-//           nb-=1;
-//        }
-
-        return aliveNeighbours;
-    }
-    
-    
+        
     //================================GETS AND SETS===============================
     
     public Cell[][] getCells(){

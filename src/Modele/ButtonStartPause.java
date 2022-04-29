@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vue;
+package Modele;
 
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -16,12 +18,10 @@ import javafx.scene.image.ImageView;
 
 /**
  *
- * @author adamsayedabouljoud
+ * @author ahmadnajjar
  */ 
 
-public class ButtonStartPause extends Button {
-    
-    
+public class ButtonStartPause extends Button {    
     private Image imgPlay = new Image("Images/TP_04_play.png") ;
     private ImageView playView; 
         
@@ -33,8 +33,8 @@ public class ButtonStartPause extends Button {
     
     boolean isActive = false;
     
-    ButtonStartPause(int size){
-        
+    public ButtonStartPause(int size){
+        super();
         this.size = size; 
         
         playView = new ImageView(imgPlay);
@@ -73,4 +73,5 @@ public class ButtonStartPause extends Button {
     public void setIsActive(boolean newA){
         this.isActive = newA;
     }
+    
 }

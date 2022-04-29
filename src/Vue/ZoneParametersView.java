@@ -6,6 +6,7 @@
 package Vue;
 
 
+import Modele.ButtonStartPause;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;

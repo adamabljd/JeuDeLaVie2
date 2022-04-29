@@ -74,7 +74,7 @@ public class main extends Application {
         ResetEvent resetEvent = new ResetEvent(zpv, trayView);
        
         //InitAlea 
-        ProbEvent probEvent = new ProbEvent(zpv, trayView);
+        PercentEvent probEvent = new PercentEvent(zpv, trayView);
        
         //events on grid
         ClickCellEvent cl=new ClickCellEvent(center,trayView);
